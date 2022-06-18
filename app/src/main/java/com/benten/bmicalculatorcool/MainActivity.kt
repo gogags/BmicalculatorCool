@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-    fun calculateBmi(heigh: Double, weigh: Double):Double{
+    fun calculateBmi(heigh: Double, weigh: Double):Double{ //should be private
         val x = heigh / 100
         val y = weigh / x * x
         return y
