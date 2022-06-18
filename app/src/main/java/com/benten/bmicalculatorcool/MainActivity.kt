@@ -13,34 +13,32 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val etHeigh:EditText = findViewById(R.id.etHeight)
-        val etWeigh:EditText = findViewById(R.id.etWeight)
-        val button : Button = findViewById(R.id.testButton)
+        val etHeigh: EditText = findViewById(R.id.etHeight)
+        val etWeigh: EditText = findViewById(R.id.etWeight)
+        val button: Button = findViewById(R.id.testButton)
         val bmiTextView: TextView = findViewById(R.id.tvYourBmiValue)
-        val imageView : ImageView = findViewById(R.id.ivBMI)
+        val imageView: ImageView = findViewById(R.id.ivBMI)
 
         button.setOnClickListener {
-            val bmi = calculateBmi(etHeigh.text.toString().toDouble(), etWeigh.text.toString().toDouble())
-            bmiTextView.text = bmi.toString()
-            if(bmi > 25 ){
+            val bmi =
+                calculateBmi(etHeigh.text.toString().toDouble(), etWeigh.text.toString().toDouble())
+            val newStrig = String.format("##.##", bmi)
+
+            bmiTextView.text = newStrig
+            if (bmi > 25) {
                 imageView.setImageResource(R.drawable.ic_workout)
-            }
-            else
+            } else
                 imageView.setImageResource(R.drawable.ic_eat)
         }
 
 
-
     }
-    fun calculateBmi(heigh: Double, weigh: Double):Double{ //should be private
+
+    fun calculateBmi(heigh: Double, weigh: Double): Double { //should be private
         val x = heigh / 100
         val y = weigh / x * x
         return y
     }
-
-
-
-
 
 
 }
